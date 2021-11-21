@@ -39,7 +39,6 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install tox pytest
           cd mlcore && pip install -e .
-          python -m nltk.downloader punkt
       # Test
       - name: Test with  tox
         run: tox
