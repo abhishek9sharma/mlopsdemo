@@ -1,6 +1,6 @@
 # recsysdemo
 
-A mini ML system which can train some prediction models for recommendation on a given user+item click interaction data set and autoamtically deploy models to be served by a simple python web API end point
+A mini ML system which can train some prediction models for recommendation on a given user+item click interaction data set and automatically deploy models to be served by a simple python web API end point
 
 ### Steps to run the notebooks/code Used. Run in root mode on Unix Based System
 
