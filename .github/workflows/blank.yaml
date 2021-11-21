@@ -39,6 +39,7 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install tox pytest
           cd mlcore && pip install -e .
+          cd ..
       # Test
       - name: Test with  tox
-        run: tox
+        run: cd tests && pip install pytest && pytest && cd ..
