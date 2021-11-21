@@ -4,4 +4,4 @@ python3 -m virtualenv recsysappvenv
 source recsysappvenv/bin/activate
 cd mlcore && pip install -e .
 cd ..
-./start.sh
+#./start.sh

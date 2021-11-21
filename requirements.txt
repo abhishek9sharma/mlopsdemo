@@ -69,8 +69,6 @@ Markdown==3.3.4
 MarkupSafe==2.0.0
 matplotlib==3.3.4
 mistune==0.8.4
-# Editable install with no version control (mlcore==0.1.0)
--e /recsysapp/mlcore
 msgpack==1.0.2
 multipledispatch==0.6.0
 nbclient==0.5.3
