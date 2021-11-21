@@ -1,0 +1,4 @@
+DATA_FOLDER=../data
+LOG_FOLDER=../logs
+DATA_FOLDER_SVC=data
+LOG_FOLDER_SVC=logs
