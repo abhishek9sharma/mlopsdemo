@@ -22,8 +22,8 @@ setup(
         "gensim>=4.0.0",
         "networkx",
         "node2vec",
-        # "keras",
-        # "tensorflow-gpu",
+        "keras",
+        "tensorflow-gpu",
     ],
     python_requires=">=3.6",
 )
