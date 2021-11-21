@@ -37,7 +37,6 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m nltk.downloader punkt
           python -m pip install tox pytest
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
            python -m nltk.downloader punkt
