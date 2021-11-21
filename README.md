@@ -150,7 +150,7 @@ fake data usin the notebook [create_dataset.ipynb](/notebooks/create_dataset.ipy
 - [models](/models): This folder contains all trained models. You may delete the db and train from scratch.
 
 - [data](/data) :  This folder contains the origial data provied plus some user hisoty data used for training sequence models.
-- [mldb.sqlite](data/mldb.sqlite) contains some training reports and latest deployed model info. Serves as a simple model registry in conjunctions with the trained models on file
+- [mldb.sqlite](data/mldb.sqlite) contains some training reports and latest deployed model info. Serves as a simple model registry in conjunction with the trained models on file
 
 ## Future Work:
 
