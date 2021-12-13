@@ -9,7 +9,7 @@ Please see the [data](/data) folder for sample data.
 
 ### Steps to run the notebooks/code Used. Run in root mode on Unix Based System
 
-- If `- you@yourmachine:~/somefolder/recsysdemo/data$` is empty download you can generate
+- If `- you@yourmachine:~/somefolder/recsysdemo/data$` is empty you can generate
 fake data usin the notebook [create_dataset.ipynb](/notebooks/create_dataset.ipynb)
 
                 --you@yourmachine:~/somefolder/recsysdemo/data$
@@ -17,7 +17,7 @@ fake data usin the notebook [create_dataset.ipynb](/notebooks/create_dataset.ipy
                     --you@yourmachine:~/somefolder/recsysdemo/data/stores.csv
                     --you@yourmachine:~/somefolder/recsysdemo/data/users.csv
 
-    ** Note that the datasset in repo is also generate using [faker](https://faker.readthedocs.io/en/master/) and may not actually represent and actual user+store click distribution.
+    - Note that the [data](/data) in repo is also generated using [faker](https://faker.readthedocs.io/en/master/) and may not be an true representation of user+store click distribution.
 
 - Using [Docker](https://www.docker.com/) (preferred way to reproduce, requires active internet connection)
 
