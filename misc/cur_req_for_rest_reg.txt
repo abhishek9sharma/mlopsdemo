@@ -1,0 +1,19 @@
+curl --location --request POST 'http://localhost:5000/predictreg' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "id":2539,
+    "name":"Clean & quiet apt home by the park",
+    "host_id":2787,
+    "host_name":"John",
+    "neighbourhood_group":"Brooklyn",
+    "neighbourhood":"Kensington",
+    "latitude":40.64749,
+    "longitude":-73.97237,
+    "room_type":"Private room",
+    "minimum_nights":1,
+    "number_of_reviews":9,
+    "last_review":"2018-10-19",
+    "reviews_per_month":0.21,
+    "calculated_host_listings_count":6,
+    "availability_365":365
+}'

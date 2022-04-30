@@ -4,7 +4,9 @@ import json
 
 from mlcore.dbhelper import read_data, store_data
 from mlcore.train_eval_helper import get_df_from_dict
+from mlcore.train_eval_helper_reg import *
 from mlcore.train_eval_helper import *
+
 from mlcore.utils import set_logger
 
 from tensorflow import keras
@@ -89,13 +91,13 @@ def get_deployed_model(
         return None, None
 
 
-def get_deployment_hist():
+def get_deployment_hist(mldbpath='../data/mldb.sqlite'):
 
     depl_hist = None
     try:
-        mldbpath = "../data/mldb.sqlite"
+        mldbpath = mldbpath
         depl_hist = read_data(mldbpath, "hist_deployed_models")
-    except:
-        print("Failed to fetch model dep hist")
+    except Exception as e:
+        print("Failed to fetch model dep hist {}".format(e))
 
     return depl_hist

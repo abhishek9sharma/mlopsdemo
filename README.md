@@ -1,21 +1,24 @@
-# recsysdemo
+# mlopsdemo
 
-A mini ML system with MLOPS capabilities (train/deploy/switch/predict) which can train some prediction models for recommendation/classification 
-given user+stores click interaction data set and automatically deploy models to be served by a simple python web API end point.
+A mini ML system with MLOPS capabilities (train/deploy/switch/predict) which can 
+- train some prediction models for recommendation/classification given user+stores click interaction data set and automatically deploy models to be served by a simple python web API end point.
+- train regression models given any regression data such as [Airbnb Pirces](https://www.kaggle.com/datasets/dgomonov/new-york-city-airbnb-open-data?select=AB_NYC_2019.csv)
 
 The task is to predict the next merchant given the click interaction data of users vs stores.
 Please see the [data](/data) folder for sample data.
 
 
+
+
 ### Steps to run the notebooks/code Used. Run in root mode on Unix Based System
 
-- If `- you@yourmachine:~/somefolder/recsysdemo/data$` is empty you can generate
+- If `- you@yourmachine:~/somefolder/mlopsdemo/data$` is empty download you can generate
 fake data usin the notebook [create_dataset.ipynb](/notebooks/create_dataset.ipynb)
 
-                --you@yourmachine:~/somefolder/recsysdemo/data$
-                    --you@yourmachine:~/somefolder/recsysdemo/data/clicks.csv
-                    --you@yourmachine:~/somefolder/recsysdemo/data/stores.csv
-                    --you@yourmachine:~/somefolder/recsysdemo/data/users.csv
+                --you@yourmachine:~/somefolder/mlopsdemo/data$
+                    --you@yourmachine:~/somefolder/mlopsdemo/data/clicks.csv
+                    --you@yourmachine:~/somefolder/mlopsdemo/data/stores.csv
+                    --you@yourmachine:~/somefolder/mlopsdemo/data/users.csv
 
     - Note that the [data](/data) in repo is also generated using [faker](https://faker.readthedocs.io/en/master/) and may not be an true representation of user+store click distribution.
 
@@ -38,14 +41,14 @@ fake data usin the notebook [create_dataset.ipynb](/notebooks/create_dataset.ipy
     
     - Navigate to folder `recsysdemo`. Once there run below command
     
-            - you@yourmachine:~/somefolder/recsysdemo$ chmod a+x rundocker.sh  && ./rundocker.sh 
+            - you@yourmachine:~/somefolder/mlopsdemo$ chmod a+x rundocker.sh  && ./rundocker.sh 
         
     - Open [http://localhost:9001/tree/notebooks](http://localhost:9001/tree/notebooks) in your browser to examine the notebooks  
     - Open [http://localhost:5000/docs](http://localhost:5000/docs) in your browser to examine the prediction api. 
 
     -If you system has CUDA + GPU configured properly you can try below command to startup the app.
         
-            ~/recsysdemo$ chmod a+x rundocker.sh  && ./rundocker_gpu.sh 
+            ~/mlopsdemo$ chmod a+x rundocker.sh  && ./rundocker_gpu.sh 
 
 - Using [Venv](https://docs.python.org/3/library/venv.html) (tested only on python3.8 and ubuntu may require tweaks on your system)
 
@@ -64,7 +67,7 @@ fake data usin the notebook [create_dataset.ipynb](/notebooks/create_dataset.ipy
 
     - Navigate to folder `recsysdemo`. Once there run below command
         
-            - you@yourmachine:~/somefolder/recsysdemo$ chmod a+x runapplocal.sh  && source ./install_runapplocal.sh 
+            - you@yourmachine:~/somefolder/mlopsdemo$ chmod a+x runapplocal.sh  && source ./install_runapplocal.sh 
     
     - Open [http://localhost:8888/tree/](http://localhost:8888/tree/) in your browser. You may have to navigate manually to recsysdemo directory
     - Open [http://localhost:5000/docs](http://localhost:5000/docs) in your browser to examine the prediction api. 
@@ -72,7 +75,7 @@ fake data usin the notebook [create_dataset.ipynb](/notebooks/create_dataset.ipy
 
 
 
-# Summary of Code 
+# Summary of Code (Recommendation/Classification)
 
 ## Notebooks
 - **EDA** : See [eda.ipynb](/notebooks/eda.ipynb) here for insights
@@ -101,11 +104,16 @@ fake data usin the notebook [create_dataset.ipynb](/notebooks/create_dataset.ipy
 
 - **Model Switching**  : The [switch_model](/notebooks/switch_model.ipynb) notebook can be used to switch models already trained.
 
+- All above tasks for regression can be achieved using below notebooks
+    - [eda_reg](/notebooks/eda_reg.ipynb)
+    - [train_reg](/notebooks/train_reg.ipynb)
+    - [switch_model_reg](/notebooks/switch_model_reg.ipynb)
+
 
 ## Rest API
-
-- **Predict API**  :  [api](/api) is a [fastapi](https://fastapi.tiangolo.com/) based rest_api which exposes the deployed models using a rest endpoint. A simple predict end point shoud come up at [http://localhost:5000/predict]([http://localhost:5000/predict) whenver the container/app comes up. You can see more info at [http://localhost:5000/docs](http://localhost:5000/docs). 
- - **Sample  Requests** : 
+### Recommendation/Classification
+- **Predict API**  :  [api](/api) is a [fastapi](https://fastapi.tiangolo.com/) based rest_api which exposes the deployed models using a rest endpoint. A simple predict end point shoud come up at [http://localhost:5000/docs#/make%20predictions/predict_predict_post]([http://localhost:5000/docs#/make%20predictions/predict_predict_post  ) whenver the container/app comes up. You can see more info at [http://localhost:5000/docs](http://localhost:5000/docs). 
+- **Sample  Requests** : 
 
     - [cur_req_for_rest.txt](misc/cur_req_for_rest.txt) file containning an exaple api request
     - [req.txt](misc/req.txt) : file containing some json requests
@@ -126,6 +134,35 @@ fake data usin the notebook [create_dataset.ipynb](/notebooks/create_dataset.ipy
             "num_of_items_req":5
         }'
 
+#### Regression
+
+- **Predict API**  :  [api](/api) is a [fastapi](https://fastapi.tiangolo.com/) based rest_api which exposes the deployed models using a rest endpoint. A simple predict end point shoud come up at [http://localhost:5000/docs#/make%20predictions/predict_predictreg_post](http://localhost:5000/docs#/make%20predictions/predict_predictreg_post) whenver the container/app comes up. You can see more info at [http://localhost:5000/docs](http://localhost:5000/docs). 
+- **Sample  Requests** : 
+
+    - [cur_req_for_rest_reg.txt](misc/cur_req_for_rest_reg.txt) file containning an exaple api request
+    - [req_reg.txt](misc/req_reg.txt) : file containing some json requests
+
+- **Test API Request**
+
+            curl --location --request POST 'http://localhost:5000/predictreg' \
+            --header 'Content-Type: application/json' \
+            --data-raw '{
+                "id":2539,
+                "name":"Clean & quiet apt home by the park",
+                "host_id":2787,
+                "host_name":"John",
+                "neighbourhood_group":"Brooklyn",
+                "neighbourhood":"Kensington",
+                "latitude":40.64749,
+                "longitude":-73.97237,
+                "room_type":"Private room",
+                "minimum_nights":1,
+                "number_of_reviews":9,
+                "last_review":"2018-10-19",
+                "reviews_per_month":0.21,
+                "calculated_host_listings_count":6,
+                "availability_365":365
+            }
 ## mlcore package
 
 - [mlcore](/mlcore) is a package of helpers scripts used in notebooks as well as rest_api
