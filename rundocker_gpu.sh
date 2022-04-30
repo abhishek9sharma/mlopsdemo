@@ -1,14 +1,14 @@
-docker stop $(docker ps|grep recsysapp| awk '{print $1}')
-docker container rm $(docker container ls -a|grep recsysapp| awk '{print $1}')
-docker image rm $(docker images|grep recsysapp| awk '{print $3}')
-docker build --tag recsysapp .
+docker stop $(docker ps|grep mlapp| awk '{print $1}')
+docker container rm $(docker container ls -a|grep mlapp| awk '{print $1}')
+docker image rm $(docker images|grep mlapp| awk '{print $3}')
+docker build --tag mlapp .
 docker run  -d --env-file .envdocker \
             --gpus all \
             -p 9001:8888 \
             -p 5000:5000 \
-            -v $PWD/notebooks:/recsysapp/notebooks \
-            -v $PWD/mlcore:/recsysapp/mlcore \
-            -v $PWD/models:/recsysapp/models \
-            -v $PWD/data:/recsysapp/data \
-            -v $PWD/logs:/recsysapp/logs \
-            recsysapp
+            -v $PWD/notebooks:/mlapp/notebooks \
+            -v $PWD/mlcore:/mlapp/mlcore \
+            -v $PWD/models:/mlapp/models \
+            -v $PWD/data:/mlapp/data \
+            -v $PWD/logs:/mlapp/logs \
+            mlapp
