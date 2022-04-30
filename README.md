@@ -20,7 +20,7 @@ fake data usin the notebook [create_dataset.ipynb](/notebooks/create_dataset.ipy
                     --you@yourmachine:~/somefolder/mlopsdemo/data/stores.csv
                     --you@yourmachine:~/somefolder/mlopsdemo/data/users.csv
 
-    ** Note that the datasset in repo is also generate using [faker](https://faker.readthedocs.io/en/master/) and may not actually represent and actual user+store click distribution.
+    - Note that the [data](/data) in repo is also generated using [faker](https://faker.readthedocs.io/en/master/) and may not be an true representation of user+store click distribution.
 
 - Using [Docker](https://www.docker.com/) (preferred way to reproduce, requires active internet connection)
 
