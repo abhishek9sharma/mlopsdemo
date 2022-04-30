@@ -7,7 +7,8 @@ RUN mkdir recsysapp
 COPY ./ /recsysapp 
 WORKDIR /recsysapp
 RUN pip install --upgrade pip
-RUN cd mlcore && pip install -e .
+#RUN cd mlcore && pip install -e .
+RUN cd mlcore && pip install .
 RUN cd .. 
 RUN ls -lah
 RUN chmod +x start.sh

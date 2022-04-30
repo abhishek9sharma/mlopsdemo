@@ -3,7 +3,7 @@
 # load_dotenv(dotenv_path = '.env')
 
 from fastapi import FastAPI
-from api.app.routers import prediction_router
+from api.app.routers import prediction_router, prediction_router_reg
 from mlcore.predictor import Predictor
 
 
@@ -17,5 +17,11 @@ def start_svc():
 
 app.include_router(
     prediction_router.router,
+    tags=['make predictions']
+)
+
+
+app.include_router(
+    prediction_router_reg.router,
     tags=['make predictions']
 )
